@@ -41,6 +41,8 @@ resource "aws_subnet" "terraform_ec2_subnet_public_1" {
 
   map_public_ip_on_launch = "true"
 
+  availability_zone = "ap-northeast-2a"
+ 
   tags = {
     Name = "terraform_ec2"
   }
@@ -57,6 +59,8 @@ resource "aws_subnet" "terraform_ec2_subnet_public_2" {
 
   map_public_ip_on_launch = "true"
 
+  availability_zone = "ap-northeast-2a"
+  
   tags = {
     Name = "terraform_ec2"
   }
