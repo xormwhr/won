@@ -6,7 +6,7 @@ provider "aws" {
 
   profile = "won-aws"
 
-  region = "ap-northeast-2"
+  region  = "ap-northeast-2"
 
 }
 
@@ -16,15 +16,15 @@ provider "aws" {
 
 resource "aws_vpc" "terraform_ec2_vpc_1" {
 
-  cidr_block = "10.0.0.0/16"
+  cidr_block           = "10.0.0.0/16"
 
-  enable_dns_support = "true"
+  enable_dns_support   = "true"
 
   enable_dns_hostnames = "true"  
 
 
   tags = {
-    Name = "terraform_ec2"
+    Name               = "terraform_ec2"
   }
 
 }
@@ -35,16 +35,16 @@ resource "aws_vpc" "terraform_ec2_vpc_1" {
 
 resource "aws_subnet" "terraform_ec2_subnet_public_1" {
 
-  vpc_id     = aws_vpc.terraform_ec2_vpc_1.id
+  vpc_id                  = aws_vpc.terraform_ec2_vpc_1.id
 
-  cidr_block = "10.0.1.0/24"
+  cidr_block              = "10.0.1.0/24"
 
   map_public_ip_on_launch = "true"
 
-  availability_zone = "ap-northeast-2a"
+  availability_zone       = "ap-northeast-2a"
  
   tags = {
-    Name = "terraform_ec2"
+    Name                  = "terraform_ec2"
   }
 
 }
@@ -53,16 +53,16 @@ resource "aws_subnet" "terraform_ec2_subnet_public_1" {
 
 resource "aws_subnet" "terraform_ec2_subnet_public_2" {
 
-  vpc_id     = aws_vpc.terraform_ec2_vpc_1.id
+  vpc_id                  = aws_vpc.terraform_ec2_vpc_1.id
 
-  cidr_block = "10.0.2.0/24"
+  cidr_block              = "10.0.2.0/24"
 
   map_public_ip_on_launch = "true"
 
-  availability_zone = "ap-northeast-2a"
+  availability_zone       = "ap-northeast-2a"
   
   tags = {
-    Name = "terraform_ec2"
+    Name                  = "terraform_ec2"
   }
 
 }
@@ -93,16 +93,16 @@ resource "aws_default_route_table" "terraform_ec2_default_route_table_1" {
 
   route {
 
-    cidr_block = "0.0.0.0/0"
+    cidr_block           = "0.0.0.0/0"
 
-    gateway_id = aws_internet_gateway.terraform_ec2_internet_gateway_1.id
+    gateway_id           = aws_internet_gateway.terraform_ec2_internet_gateway_1.id
 
   }
 
 
   tags = {
 
-    Name = "terraform_ec2"
+    Name                 = "terraform_ec2"
 
   }
 
@@ -174,7 +174,7 @@ resource "aws_default_network_acl" "terraform_ec2_default_network_acl_1" {
 
   tags = {
 
-    Name = "terraform_ec2"
+    Name       = "terraform_ec2"
 
   }
   
@@ -185,13 +185,9 @@ resource "aws_default_network_acl" "terraform_ec2_default_network_acl_1" {
 # Security Group (aws_security_group)
 #--------------------
 
-resource "aws_security_group" "terraform_ec2_security_group_1" {
+resource "aws_default_security_group" "terraform_ec2_security_group_1" {
 
-  name        = "terraform_ec2"
-
-  description = "terraform_ec2 terraform_ec2_security_group_1"
-
-  vpc_id      = aws_vpc.terraform_ec2_vpc_1.id
+  vpc_id = aws_vpc.terraform_ec2_vpc_1.id
 
   ingress {
 
@@ -203,7 +199,7 @@ resource "aws_security_group" "terraform_ec2_security_group_1" {
 
     to_port          = 0
 
-    self             = true
+    cidr_blocks      = ["0.0.0.0/0"]   
 
   }
 
@@ -217,7 +213,7 @@ resource "aws_security_group" "terraform_ec2_security_group_1" {
 
     to_port          = 443
 
-    self             = true    
+    cidr_blocks      = ["0.0.0.0/0"]   
 
   }
 
@@ -231,8 +227,7 @@ resource "aws_security_group" "terraform_ec2_security_group_1" {
 
     to_port          = 80
 
-    self             = true
-
+    cidr_blocks      = ["0.0.0.0/0"]   
   }
 
   ingress {
@@ -245,7 +240,7 @@ resource "aws_security_group" "terraform_ec2_security_group_1" {
 
     to_port          = 22
 
-    self             = true
+    cidr_blocks      = ["0.0.0.0/0"]   
 
   }
 
@@ -257,13 +252,13 @@ resource "aws_security_group" "terraform_ec2_security_group_1" {
 
     protocol         = "-1"
 
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks      = ["0.0.0.0/0"]
 
   }
 
   tags = {
 
-    Name = "terraform_ec2"
+    Name             = "terraform_ec2"
 
   }
 
