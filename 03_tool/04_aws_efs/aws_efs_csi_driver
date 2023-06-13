@@ -1,0 +1,23 @@
+
+#--------------------
+# AWS EFS CSI Driver 
+#--------------------
+
+ - AWS
+
+   : https://docs.aws.amazon.com/ko_kr/eks/latest/userguide/efs-csi.html
+
+
+ - Git
+
+   : https://github.com/kubernetes-sigs/aws-efs-csi-driver
+
+
+ - AWS EFS CSI Driver Install
+
+   $ helm repo add aws-efs-csi-driver https://kubernetes-sigs.github.io/aws-efs-csi-driver
+
+   $ helm repo update
+
+   $ helm upgrade --install aws-efs-csi-driver --namespace kube-system aws-efs-csi-driver/aws-efs-csi-driver 
+

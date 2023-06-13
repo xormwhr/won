@@ -1,0 +1,28 @@
+
+#--------------------
+# AWS EBS CSi Driver
+#--------------------
+
+ - AWS Policy Add
+
+   : arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy
+
+
+ - Secret Create
+
+   $ kubectl create secret generic aws-secret \
+        --namespace kube-system \
+        --from-literal "key_id=${AWS_ACCESS_KEY_ID}" \
+        --from-literal "access_key=${AWS_SECRET_ACCESS_KEY}"
+
+
+ - Helm AWS EBS CSI Driver Install
+
+   $ helm repo add aws-ebs-csi-driver https://kubernetes-sigs.github.io/aws-ebs-csi-driver
+
+   $ helm repo update
+
+   $ helm install aws-ebs-csi-driver \
+        --namespace kube-system \
+        aws-ebs-csi-driver/aws-ebs-csi-driver
+

@@ -1,0 +1,74 @@
+
+#--------------------
+# Kubespray
+#--------------------
+
+
+#--------------------
+# Ansible Kubespray Install
+#--------------------
+
+ - https://github.com/kubernetes-sigs/kubespray
+
+#--------------------
+# Setting [ All Server ]
+#--------------------
+
+ - Swap 
+      
+   $ sudo swapoff -a
+
+
+ - IP Forward
+
+   $ sudo sysctl -w net.ipv4.ip_forward=1
+
+   $ cat /proc/sys/net/ipv4/ip_forward
+
+
+ - Hosts
+
+   : 10.0.1.238 master01
+     10.0.2.104 worker01
+     10.0.2.30  worker02
+
+#--------------------
+# Setting [ Master Server ]
+#--------------------
+
+ - Yum
+
+   $ sudo yum install ansible python3 python3-pip -y
+
+ 
+ - SSH Key
+
+   $ ssh-keygen -t rsa
+
+   : authorized_keys 설정 ( worker01, worker02 )  
+
+#--------------------
+# Kubespray Kubernetes [ Master Server ]
+#--------------------
+
+ - Kubernetes Install
+
+   $ git clone https://github.com/kubernetes-sigs/kubespray.git
+
+   $ cd kubespray
+
+   $ sudo pip3 install -r requirements.txt
+
+
+ - Inventory 설정 
+
+
+ - Ping Test
+
+   $ ansible all -i inventory/mycluster/inventory.ini -m ping
+
+
+ - Ansible Playbook Kubernetes Install
+
+   $ ansible-playbook -i inventory/mycluster/inventory.ini  --become --become-user=root cluster.yml
+ 
