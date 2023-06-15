@@ -1,0 +1,18 @@
+110c110
+<   enabled: true
+---
+>   enabled: false
+115c115
+<   hostRepo: nexus.wontest.shop
+---
+>   hostRepo: repo.demo
+127,128c127
+<   # type: ClusterIP
+<   type: NodePort
+---
+>   type: ClusterIP
+154c153
+<   existingClaim: "nexus-pvc"
+---
+>   # existingClaim:
+
