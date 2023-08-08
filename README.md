@@ -13,7 +13,5 @@ Harbor : harbor.wontest.shop
 
 ArgoCD : argocd.wontest.shop
 
-Prometheus : prometheus.wontest.shop
-
 Grafana : grafana.wontest.shop
 
