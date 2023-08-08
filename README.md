@@ -1,11 +1,11 @@
 # won
 오픈용 
 
-Home : wontest.shop \n\n
-Jenkins : jenkins.wontest.shop \n\n
-Nexus : nexus.wontest.shop \n\n
-Sonarqube : sonarqube.wontest.shop \n\n
-Harbor : harbor.wontest.shop \n\n
-ArgoCD : argocd.wontest.shop \n\n
-Prometheus : prometheus.wontest.shop \n\n
-Grafana : grafana.wontest.shop \n\n
+Home : wontest.shop 
+Jenkins : jenkins.wontest.shop 
+Nexus : nexus.wontest.shop 
+Sonarqube : sonarqube.wontest.shop 
+Harbor : harbor.wontest.shop 
+ArgoCD : argocd.wontest.shop 
+Prometheus : prometheus.wontest.shop 
+Grafana : grafana.wontest.shop 
